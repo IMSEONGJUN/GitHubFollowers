@@ -101,6 +101,7 @@ class NetworkManager {
             completed(image)
             return
         }
+        
         guard let url = URL(string: urlString) else {
             completed(nil)
             return
