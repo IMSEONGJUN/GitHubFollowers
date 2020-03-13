@@ -12,7 +12,7 @@ import UIKit
 
 class FollowerListVC: UIViewController {
 
-    enum Section { case main }
+    enum Section: CaseIterable { case main }
     
     var username = ""
     var followers = [Follower]()
@@ -114,7 +114,8 @@ class FollowerListVC: UIViewController {
     func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(followers)
+//        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(followers, toSection: .main)
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }

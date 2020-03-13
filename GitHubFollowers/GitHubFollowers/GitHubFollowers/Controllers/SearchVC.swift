@@ -108,7 +108,7 @@ class SearchVC: UIViewController {
     
     func configureCallToActionButton() {
         view.addSubview(callToActionButton)
-        callToActionButton.addTarget(self, action: #selector(didTapFollowerListButton), for: .touchUpInside)
+        callToActionButton.addTarget(self, action: #selector(didTapGetListButton), for: .touchUpInside)
         
         let callToActionButtonBottomConstant:CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ?  -20 : -50
         
@@ -132,7 +132,7 @@ class SearchVC: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    @objc func didTapFollowerListButton() {
+    @objc func didTapGetListButton() {
         guard isUsernameEntered else {
             vibrate()
             presentGFAlertOnMainThread(title: "Empty UserName", message: "Please enter a username. We need to know who to look for :)", buttonTitle: "OK")
@@ -154,7 +154,7 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        didTapFollowerListButton()
+        didTapGetListButton()
         return true
     }
 }
@@ -166,7 +166,7 @@ extension SearchVC: FavoritesVCDelegate {
         
             self.usernameTextField.text = username
             NetworkManager.shared.whatToLoad = whatToLoad.rawValue
-            didTapFollowerListButton()
+            didTapGetListButton()
         }
     }
     
