@@ -89,33 +89,39 @@ extension FavoritesListVC: UITableViewDataSource{
 extension FavoritesListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favorites[indexPath.row]
-        let destVC = UserInfoVC()
-        destVC.delegate = self
-        destVC.isFromFavoriteView = true
-        destVC.username = favorite.login
-        destVC.title = favorite.login
+        let userInfoVC = UserInfoVC()
+        userInfoVC.delegate = self
+        userInfoVC.isFromFavoriteView = true
+        userInfoVC.username = favorite.login
+        userInfoVC.title = favorite.login
         
-        navigationController?.pushViewController(destVC, animated: true)
+        navigationController?.pushViewController(userInfoVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else {return}
-        
+        print("1")
         PersistenceManager.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
             guard let self = self else {return}
             guard let error = error else {
+                print("2")
                 self.favorites.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
                 return
             }
             self.presentGFAlertOnMainThread(title: "Unable to remove", message: error.rawValue, buttonTitle: "OK")
         }
+        print("3")
         if favorites.isEmpty {
+            print("5")
             DispatchQueue.main.async {
                 self.tableView.separatorStyle = .none
                 self.showEmptyStateView(with: "😭 No Favorite?\nAdd one on the List screen or UserInfo screen pushing + Button", in: self.view )
+                print("7")
             }
+            print("6")
         }
+        print("4")
     }
 }
 extension FavoritesListVC: UserInfoVCDelegate {

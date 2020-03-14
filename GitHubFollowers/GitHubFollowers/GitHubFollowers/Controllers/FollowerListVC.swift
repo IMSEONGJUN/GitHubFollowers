@@ -165,11 +165,11 @@ extension FollowerListVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let activeArray = isSearching ? filteredFollowers : followers
         let follower = activeArray[indexPath.item]
-        let destVC = UserInfoVC()
-        destVC.username = follower.login
-        destVC.delegate = self
+        let userInfoVC = UserInfoVC()
+        userInfoVC.username = follower.login
+        userInfoVC.delegate = self
         hasMoreFollowers = true
-        let navi = UINavigationController(rootViewController: destVC)
+        let navi = UINavigationController(rootViewController: userInfoVC)
         present(navi, animated: true)
     }
 }

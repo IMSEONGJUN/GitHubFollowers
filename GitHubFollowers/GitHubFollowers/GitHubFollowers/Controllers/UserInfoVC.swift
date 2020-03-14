@@ -80,21 +80,25 @@ class UserInfoVC: UIViewController {
     }
     
     func getUserInfo() {
+        print("1")
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else {return}
-            
+            print("9")
             switch result {
             case .success(let user):
                 DispatchQueue.main.async { self.configureUIElements(with: user) }
-                
+                print("10")
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
                 break
             }
+            print("11")
         }
+        print("6")
     }
     
     func configureUIElements(with user: User) {
+        print("12")
         self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
         
         let repoItemVC = GFRepoItemVC(user: user)

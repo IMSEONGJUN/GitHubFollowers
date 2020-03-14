@@ -57,14 +57,14 @@ class NetworkManager {
     
     func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
         let endpoint = baseURL + "\(username)"
-        
+        print("2")
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidUsername))
             return
         }
-        
+        print("3")
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
+            print("7")
             if let _ = error {
                 completed(.failure(.unableToComplete))
                 return
@@ -85,13 +85,15 @@ class NetworkManager {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 decoder.dateDecodingStrategy = .iso8601
                 let user = try decoder.decode(User.self, from: data)
+                print("8")
                 completed(.success(user))
             } catch {
                 completed(.failure(.invalidData))
             }
         }
-        
+        print("4")
         task.resume()
+        print("5")
     }
     
     func downLoadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
