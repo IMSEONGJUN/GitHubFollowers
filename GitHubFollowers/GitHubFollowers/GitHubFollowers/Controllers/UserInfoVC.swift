@@ -81,20 +81,30 @@ class UserInfoVC: UIViewController {
     
     func getUserInfo() {
         print("1")
+        let group = DispatchGroup()
+        group.enter()
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else {return}
             print("9")
             switch result {
             case .success(let user):
-                DispatchQueue.main.async { self.configureUIElements(with: user) }
+                DispatchQueue.main.async {
+                    print("11.5")
+                    self.configureUIElements(with: user)
+                }
                 print("10")
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
                 break
             }
             print("11")
+            group.leave()
         }
-        print("6")
+//        group.wait()
+        group.notify(queue: .main) {
+            print("6")
+        }
+        
     }
     
     func configureUIElements(with user: User) {
@@ -111,6 +121,7 @@ class UserInfoVC: UIViewController {
         self.add(childVC: repoItemVC, to: self.itemViewOne)
         self.add(childVC: followerItemVC, to: self.itemViewTwo)
         self.dateLabel.text = "Started GitHub Since \(user.createdAt.convertToMonthYearFormat())"
+        print("13")
     }
     
     func configureScrollView(){

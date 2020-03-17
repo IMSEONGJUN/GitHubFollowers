@@ -13,7 +13,7 @@ class NetworkManager {
     private let baseURL = "https://api.github.com/users/"
     
     let cache = NSCache<NSString, UIImage>()
-    var whatToLoad = "followers"
+    var whatToLoad = WhatToLoad.followers.rawValue
     let countPerPage = 100
     private init() {}
     
@@ -90,6 +90,7 @@ class NetworkManager {
             } catch {
                 completed(.failure(.invalidData))
             }
+            print("Async task end")
         }
         print("4")
         task.resume()
