@@ -32,7 +32,7 @@
 - Repository: https://github.com/IMSEONGJUN/GitHubFollowers
 ---
 ```
-git clone https://github.com/IMSEONGJUN/GitHubFollowers GitHubFollowers_ImSeongjun
-cd GitHubFollowers_ImSeongjun
+git clone https://github.com/IMSEONGJUN/GitHubFollowers GitHubFollowers
+cd GitHubFollowers
 open GitHubFollowers.xcodeproj
 ```
