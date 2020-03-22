@@ -15,3 +15,26 @@
 ## Concept
 
 ![이미지](https://github.com/IMSEONGJUN/GitHubFollowers/blob/master/GitHubFollowers/screenshot/GitHubFollowers.png?raw=true)
+
+
+## Features
+
+- Can search Followers or Followings List of Github users by Username
+- Can favorite Github user and save in Star Tab
+- Can access user's GitHub page and Repository
+
+## Deployment Target
+
+- iOS 13.0 or higher
+
+## Getting Dev Started
+
+### Project Setup
+
+- Repository: https://github.com/IMSEONGJUN/GitHubFollowers
+---
+```
+git clone https://github.com/IMSEONGJUN/GitHubFollowers GitHubFollowers_ImSeongjun
+cd GitHubFollowers_ImSeongjun
+open GitHubFollowers.xcodeproj
+```
