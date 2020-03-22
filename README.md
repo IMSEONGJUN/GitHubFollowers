@@ -5,10 +5,10 @@
 [<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">](https://itunes.apple.com/us/app/github-followers/id1497318994?mt=8) [<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store-kr.svg">](https://itunes.apple.com/kr/app/github-followers/id1497318994?mt=8)
 
 ## About GitHubFollowers
-> - User Network ** for `GitHub` users
-> - The other followers of my followers are ** What developers? **
+> - **User Network** for `GitHub` users
+> - The other followers of my followers are **What developers?**
 > - Let's add some cool developers to my **Favorite List** and visit thier pages often!
-> - What kind of developers are in the following list of **competent developers?** Let's find it and see their Repository !!
+> - What kind of developers are in the following list of **competent developers?** Let's find it and see their `Repository` !!
 
 ## Concept
 
