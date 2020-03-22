@@ -15,7 +15,7 @@
 ![이미지](https://github.com/IMSEONGJUN/GitHubFollowers/blob/master/GitHubFollowers/screenshot/GitHubFollowers.png?raw=true)
 
 
-## Features
+## Features 
 
 - Can search Followers or Followings List of Github users by Username
 - Can favorite Github user and save in Star Tab
