@@ -12,5 +12,6 @@
 
 
 
+## Concept
 
 ![이미지](https://github.com/IMSEONGJUN/GitHubFollowers/blob/master/GitHubFollowers/screenshot/GitHubFollowers.png?raw=true)
