@@ -10,3 +10,7 @@
 > - 보고 배울 수 있는 멋진 개발자들을 나의 **Favorite List에 추가**해두고 Page에 자주 방문해보자!
 > - 유능한 개발자의 또 다른 Following 리스트에는 어떤 개발자가 있을까? 찾아보고 Repository도 구경해보자!!
 
+
+
+
+![이미지](https://github.com/IMSEONGJUN/GitHubFollowers/blob/master/GitHubFollowers/screenshot/GitHubFollowers.png?raw=true)
