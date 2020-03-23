@@ -68,7 +68,7 @@ class GFItemInfoVC: UIViewController {
         view.addSubview(stackView)
         view.addSubview(actionButton)
         
-        mySwitch.addTarget(self, action: #selector(switchButtonHandle(_sender:)), for: .valueChanged)
+        mySwitch.addTarget(self, action: #selector(switchButtonHandle(_:)), for: .valueChanged)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         let padding: CGFloat = 20
@@ -86,6 +86,6 @@ class GFItemInfoVC: UIViewController {
         ])
     }
 
-    @objc func switchButtonHandle(_sender: UISwitch) {
+    @objc func switchButtonHandle(_ sender: UISwitch) {
     }
 }

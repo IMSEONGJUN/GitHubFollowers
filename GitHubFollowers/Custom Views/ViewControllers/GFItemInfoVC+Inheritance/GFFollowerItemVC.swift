@@ -38,7 +38,7 @@ class GFFollowerItemVC: GFItemInfoVC {
         delegate?.didTapGetFollowers(for: user, whatToLoad: whatToLoad)
     }
     
-    override func switchButtonHandle(_sender: UISwitch) {
+    override func switchButtonHandle(_ sender: UISwitch) {
         
         self.actionButton.setTitle(self.mySwitch.isOn ? "Get Followers" : "Get Following", for: .normal)
         
