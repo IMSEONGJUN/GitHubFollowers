@@ -23,7 +23,7 @@
 
 ## Deployment Target
 
-- iOS 13.0 or higher
+- iOS 13.2 or higher
 
 ## Getting Dev Started
 
