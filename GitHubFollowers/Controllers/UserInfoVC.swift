@@ -194,7 +194,12 @@ extension UserInfoVC: GFItemInfoVCDelegate {
         
         if !isFromFavoriteView {
             dismissVC()
-        } 
+        }
+//        else {
+//            DispatchQueue.main.async {
+//                self.tabBarController?.selectedIndex = 0
+//            }
+//        }
     }
     
     

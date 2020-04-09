@@ -168,7 +168,18 @@ extension SearchVC: FavoritesVCDelegate {
             NetworkManager.shared.whatToLoad = whatToLoad.rawValue
             didTapGetListButton()
         }
-    }
+}
     
     
 
+//extension SearchVC: UserInfoVCDelegate {
+//    func didRequestFollowers(for username: String, whatToLoad: WhatToLoad) {
+//        delegate?.popViewController()
+//        
+//            self.usernameTextField.text = username
+//            NetworkManager.shared.whatToLoad = whatToLoad.rawValue
+//            didTapGetListButton()
+//    }
+    
+    
+//}

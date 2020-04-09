@@ -90,6 +90,9 @@ extension FavoritesListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favorites[indexPath.row]
         let userInfoVC = UserInfoVC()
+//        guard let searchVC = self.tabBarController?.viewControllers?.first?.children.first as? SearchVC else { return } // 탭바 컨트롤러의 뷰컨트롤러 중 그것의 children 중 첫번째로 찾아서 searchVC객체에 delegate 연결할 수 있었다.
+        
+//        userInfoVC.delegate = searchVC
         userInfoVC.delegate = self
         userInfoVC.isFromFavoriteView = true
         userInfoVC.username = favorite.login

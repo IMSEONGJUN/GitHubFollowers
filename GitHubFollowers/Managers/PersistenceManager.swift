@@ -15,8 +15,8 @@ enum PersistenceActionType {
 
 enum PersistenceManager {
     
-    static private let defaults = UserDefaults.standard
-    
+    static private let defaults = UserDefaults.standard // 객체 생성없이 사용해야하며, PersistenceManager안에서만 사용해야하니까
+                                                        // static private 붙여줌
     enum Keys {
         static let favorites = "favorites"
     }
