@@ -81,6 +81,7 @@ class UserInfoVC: UIViewController {
     
     func getUserInfo() {
         print("1")
+//        let semaphore = DispatchSemaphore(value: 0)
         let group = DispatchGroup()
         group.enter()
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
@@ -98,13 +99,15 @@ class UserInfoVC: UIViewController {
                 break
             }
             print("11")
+//            semaphore.signal()
             group.leave()
         }
-//        group.wait()
+//        semaphore.wait()
+        group.wait()
+        print("after Async task end")
         group.notify(queue: .main) {
             print("6")
         }
-        
     }
     
     func configureUIElements(with user: User) {
