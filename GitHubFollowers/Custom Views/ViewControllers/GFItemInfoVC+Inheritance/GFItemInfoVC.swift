@@ -23,14 +23,13 @@ class GFItemInfoVC: UIViewController {
     
     
     weak var delegate: GFItemInfoVCDelegate?
-    var user: User!
+    var user: User
     
     init(user: User) {
-        super.init(nibName: nil, bundle: nil)
         self.user = user
+        super.init(nibName: nil, bundle: nil)
     }
-    
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

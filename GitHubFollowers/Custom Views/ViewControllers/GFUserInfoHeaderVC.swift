@@ -17,12 +17,12 @@ class GFUserInfoHeaderVC: UIViewController {
     let locationLabel = GFSecondaryTitleLabel(fontSize: 18)
     let bioLabel = GFBodyLabel(textAlignment: .left)
     
-    var subViews = [UIView]()
-    var user: User!
+    lazy var subViews = [avatarImageView, usernameLabel, nameLabel, locationLabel, locationImageView, bioLabel]
+    var user: User
     
     init(user:User) {
-        super.init(nibName: nil, bundle: nil)
         self.user = user
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -59,7 +59,6 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     func addSubViews() {
-        subViews = [avatarImageView, usernameLabel, nameLabel, locationLabel, locationImageView, bioLabel]
         subViews.forEach({view.addSubview($0)})
     }
     

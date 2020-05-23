@@ -186,7 +186,7 @@ extension FollowerListVC: UISearchResultsUpdating {
             
         }
         isSearching = true
-        filteredFollowers = followers.filter{ $0.login.lowercased().contains(filterKey.lowercased())}
+        filteredFollowers = followers.filter{ $0.login.lowercased().contains(filterKey.lowercased()) }
         updateData(on: filteredFollowers)
     }
 }
