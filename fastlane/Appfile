@@ -1,7 +1,0 @@
-app_identifier "com.SeongjunIm.www.GitHubFollowers" # The bundle identifier of your app
-apple_id "naroti@naver.com" # Your Apple email address
-
-team_id "ADHC8G6NHC" # Developer Portal Team ID
-
-# you can even provide different app identifiers, Apple IDs and team names per lane:
-# More information: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md
