@@ -128,8 +128,7 @@ class SearchVC: UIViewController {
     }
     
     func createDismissKeyboardTapGesture() {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
     }
     
     @objc func didTapGetListButton() {
@@ -161,25 +160,9 @@ extension SearchVC: UITextFieldDelegate {
 
 extension SearchVC: FavoritesVCDelegate {
     func requestFollowerOrFollowingList(for username: String, whatToLoad: WhatToLoad) {
-            
             delegate?.popViewController()
-        
             self.usernameTextField.text = username
             NetworkManager.shared.whatToLoad = whatToLoad.rawValue
             didTapGetListButton()
         }
 }
-    
-    
-
-//extension SearchVC: UserInfoVCDelegate {
-//    func didRequestFollowers(for username: String, whatToLoad: WhatToLoad) {
-//        delegate?.popViewController()
-//        
-//            self.usernameTextField.text = username
-//            NetworkManager.shared.whatToLoad = whatToLoad.rawValue
-//            didTapGetListButton()
-//    }
-    
-    
-//}

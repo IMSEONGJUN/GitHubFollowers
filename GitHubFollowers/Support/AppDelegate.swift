@@ -25,13 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func createTabBar() -> UITabBarController {
         let searchVC = SearchVC()
-        searchVC.title = "Search"
+//        searchVC.title = "Search"
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         let searchNavi = UINavigationController(rootViewController: searchVC)
         
         let favoritesListVC = FavoritesListVC()
         favoritesListVC.delegate = searchVC
-        favoritesListVC.title = "Favorites"
+//        favoritesListVC.title = "Favorites"
         favoritesListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         let favoritesNavi = UINavigationController(rootViewController: favoritesListVC)
         
