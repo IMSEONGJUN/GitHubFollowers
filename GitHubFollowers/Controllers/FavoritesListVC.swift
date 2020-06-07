@@ -44,7 +44,7 @@ class FavoritesListVC: UIViewController {
             case .success(let favorites):
                 if favorites.isEmpty {
                     self.tableView.separatorStyle = .none
-                    self.showEmptyStateView(with: "😭 No Favorite?\nAdd one on the List screen or UserInfo screen pushing + Button", in: self.view )
+                    self.showEmptyStateView(with: "😭 No Favorite?\nAdd certain Github user by pushing + Button", in: self.view )
                 } else {
                     self.tableView.separatorStyle = .singleLine
                     self.favorites = favorites
