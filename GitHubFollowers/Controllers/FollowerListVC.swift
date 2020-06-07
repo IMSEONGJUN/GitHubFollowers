@@ -71,6 +71,7 @@ class FollowerListVC: UIViewController {
     func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
+//        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for a username"
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
@@ -158,7 +159,7 @@ extension FollowerListVC: UICollectionViewDelegateFlowLayout {
         let deviceViewHeight = scrollView.frame.size.height
         
         if offsetY > totalScrollViewContentHeight - deviceViewHeight {
-            guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
+            guard !isSearching, hasMoreFollowers, !isLoadingMoreFollowers else { return }
             page += 1
             getFollowers(username: username, page: page)
         }
@@ -170,7 +171,7 @@ extension FollowerListVC: UICollectionViewDelegateFlowLayout {
         let userInfoVC = UserInfoVC()
         userInfoVC.username = follower.login
         userInfoVC.delegate = self
-        hasMoreFollowers = true
+//        hasMoreFollowers = true
         let navi = UINavigationController(rootViewController: userInfoVC)
         present(navi, animated: true)
     }
