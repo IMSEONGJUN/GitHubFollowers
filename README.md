@@ -6,8 +6,9 @@
 
 ## Version
 
-- Latest Update : 2020. 04. 20
-- Latest Version : v1.0.1
+- Latest Update : 2020. 06. 08
+- Latest Version : v1.0.2
+- Changed : remove images associated with Github.com
 
 ## About GitHubFollowers
 > - **User Network** for `GitHub` users
