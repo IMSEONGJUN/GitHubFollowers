@@ -49,8 +49,11 @@ class FavoritesListVC: UIViewController {
                     self.tableView.separatorStyle = .singleLine
                     self.favorites = favorites
                     DispatchQueue.main.async {
+                        if let emptyView = self.view.subviews.last as? GFEmptyStateView {
+                            emptyView.removeFromSuperview()
+                        }
                         self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView)
+//                        self.view.bringSubviewToFront(self.tableView)
                     }
                 }
                 self.favorites = favorites
@@ -119,7 +122,7 @@ extension FavoritesListVC: UITableViewDelegate {
             print("5")
             DispatchQueue.main.async {
                 self.tableView.separatorStyle = .none
-                self.showEmptyStateView(with: "😭 No Favorite?\nAdd one on the List screen or UserInfo screen pushing + Button", in: self.view )
+                self.showEmptyStateView(with: "😭 No Favorite?\nAdd certain Github user by pushing + Button", in: self.view )
                 print("7")
             }
             print("6")
