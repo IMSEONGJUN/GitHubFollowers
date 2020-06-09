@@ -6,7 +6,7 @@
 
 ## Version
 
-- Latest Update : 2020. 06. 08
+- Latest Update : 2020. 06. 08 -> awaiting approval
 - Latest Version : v1.0.2
 - Changed : remove images associated with Github.com
 
