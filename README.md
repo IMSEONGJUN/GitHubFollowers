@@ -1,13 +1,14 @@
 
-# GitHubFollowers <img src = "https://github.com/IMSEONGJUN/GitHubFollowers/blob/master/GitHubFollowers/Support/Assets.xcassets/AppIcon.appiconset/Icon.png?raw=true" width = 50 align = right>
+# GitHubFollowers <img src = "https://github.com/IMSEONGJUN/GitHubFollowers/blob/master/GitHubFollowers/Support/Assets.xcassets/AppIcon.appiconset/Icon-1024.png?raw=true" width = 50 align = right>
 > **First Personal Project**
 
 [<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">](https://itunes.apple.com/us/app/github-followers/id1497318994?mt=8) [<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store-kr.svg">](https://itunes.apple.com/kr/app/github-followers/id1497318994?mt=8)
 
 ## Version
 
-- Latest Update : 2020. 04. 20
-- Latest Version : v1.0.1
+- Latest Update : 2020. 06. 08 -> awaiting approval
+- Latest Version : v1.0.2
+- Changed : remove images associated with Github.com
 
 ## About GitHubFollowers
 > - **User Network** for `GitHub` users
