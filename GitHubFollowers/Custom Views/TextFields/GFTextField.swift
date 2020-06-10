@@ -35,11 +35,9 @@ class GFTextField: UITextField {
         
         backgroundColor = .tertiarySystemBackground
         autocorrectionType = .no
-        //keyboardType = .emailAddress
         returnKeyType = .go
         clearButtonMode = .whileEditing
         enablesReturnKeyAutomatically = true
-        
         placeholder = "Enter a username"
     }
 

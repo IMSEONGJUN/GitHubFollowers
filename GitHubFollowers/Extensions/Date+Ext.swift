@@ -18,9 +18,7 @@ extension Date {
     }
 }
 
-
 extension UIView {
-    
     func pinToEdge(of superView: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
