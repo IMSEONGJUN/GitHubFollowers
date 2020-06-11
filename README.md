@@ -6,9 +6,9 @@
 
 ## Version
 
-- Latest Update : 2020. 06. 08 -> awaiting approval
+- Latest Update : 2020. 06. 11
 - Latest Version : v1.0.2
-- Changed : remove images associated with Github.com
+- Changes : remove images associated with Github.com and Change App Name & Icon.
 
 ## About GitHubFollowers
 > - **User Network** for `GitHub` users
