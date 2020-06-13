@@ -37,7 +37,8 @@ class FavoriteCellTableViewCell: UITableViewCell {
     private func configure() {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(usernameLabel)
-        
+        contentView.backgroundColor = .white
+        selectedBackgroundView?.isHidden = true
         accessoryType = .disclosureIndicator
         
         let padding: CGFloat = 12
