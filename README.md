@@ -6,9 +6,9 @@
 
 ## Version
 
-- Latest Update : 2020. 06. 08 -> awaiting approval
-- Latest Version : v1.0.2
-- Changed : remove images associated with Github.com
+- Latest Update : 2020. 06. 12 -> awaiting approval...
+- Latest Version : v1.0.3
+- Changes : Troubleshooting transparent problems with the Favorites tab's cell background
 
 ## About GitHubFollowers
 > - **User Network** for `GitHub` users
