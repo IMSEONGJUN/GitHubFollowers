@@ -6,7 +6,7 @@
 
 ## Version
 
-- Latest Update : 2020. 06. 12 -> awaiting approval...
+- Latest Update : 2020. 06. 12
 - Latest Version : v1.0.3
 - Changes : Troubleshooting transparent problems with the Favorites tab's cell background
 
