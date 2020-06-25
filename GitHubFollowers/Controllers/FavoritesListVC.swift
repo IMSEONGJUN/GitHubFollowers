@@ -29,6 +29,9 @@ class FavoritesListVC: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Favorites"
         navigationController?.navigationBar.prefersLargeTitles = true
+//        let appearance = UINavigationBarAppearance()
+//        appearance.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
+//        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +68,7 @@ class FavoritesListVC: UIViewController {
     }
     
     func configureTableView() {
+        tableView.backgroundColor = .tertiarySystemBackground
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80
