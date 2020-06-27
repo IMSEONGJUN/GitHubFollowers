@@ -39,9 +39,13 @@ class FavoriteCellTableViewCell: UITableViewCell {
         contentView.addSubview(usernameLabel)
         
         contentView.backgroundColor = .tertiarySystemBackground
+        backgroundColor = .tertiarySystemBackground
         selectedBackgroundView?.isHidden = true
-//        accessoryType = .disclosureIndicator
-        accessoryType = .none
+        accessoryType = .disclosureIndicator
+//        let image = UIImageView(image: UIImage(systemName: "chevron.right"))
+//        image.backgroundColor = .tertiarySystemBackground
+//        accessoryView = image
+
         let padding: CGFloat = 12
         
         NSLayoutConstraint.activate([
