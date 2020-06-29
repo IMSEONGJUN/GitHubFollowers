@@ -7,8 +7,8 @@
 ## Version
 
 - Latest Update : 2020. 06. 12
-- Latest Version : v1.0.3
-- Changes : Troubleshooting transparent problems with the Favorites tab's cell background
+- Latest Version : v1.0.4
+- Changes : changed UI color of the favorite tab in dark mode.
 
 ## About GitHubFollowers
 > - **User Network** for `GitHub` users
