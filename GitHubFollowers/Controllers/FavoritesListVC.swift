@@ -12,26 +12,20 @@ protocol FavoritesVCDelegate: class {
     func requestFollowerOrFollowingList(for username: String, whatToLoad: WhatToLoad)
 }
 
-
 class FavoritesListVC: UIViewController {
 
+    // MARK: - Properties
     let tableView = UITableView()
     var favorites: [Follower] = []
     
     weak var delegate: FavoritesVCDelegate?
     
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewDidLoad()
+        configureNaviBar()
         configureTableView()
-    }
-    func configureViewDidLoad() {
-        view.backgroundColor = .systemBackground
-        title = "Favorites"
-        navigationController?.navigationBar.prefersLargeTitles = true
-//        let appearance = UINavigationBarAppearance()
-//        appearance.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
-//        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +34,28 @@ class FavoritesListVC: UIViewController {
     }
     
     
+    // MARK: - Initial SetUp
+    func configureNaviBar() {
+        view.backgroundColor = .systemBackground
+        title = "Favorites"
+        navigationController?.navigationBar.prefersLargeTitles = true
+//        let appearance = UINavigationBarAppearance()
+//        appearance.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
+//        navigationController?.navigationBar.standardAppearance = appearance
+    }
+    
+    func configureTableView() {
+        tableView.backgroundColor = .tertiarySystemBackground
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 80
+        tableView.register(FavoriteCellTableViewCell.self, forCellReuseIdentifier: FavoriteCellTableViewCell.reuseID)
+        tableView.frame = view.bounds
+        tableView.tableFooterView = UIView(frame: .zero)
+        view.addSubview(tableView)
+    }
+    
+    // MARK: - Action Handler
     func getFavorites() {
         PersistenceManager.retrieveFavorites { [weak self] result in
             guard let self = self else {return}
@@ -66,19 +82,10 @@ class FavoritesListVC: UIViewController {
             }
         }
     }
-    
-    func configureTableView() {
-        tableView.backgroundColor = .tertiarySystemBackground
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = 80
-        tableView.register(FavoriteCellTableViewCell.self, forCellReuseIdentifier: FavoriteCellTableViewCell.reuseID)
-        tableView.frame = view.bounds
-        tableView.tableFooterView = UIView(frame: .zero)
-        view.addSubview(tableView)
-    }
 }
 
+
+// MARK: - UITableViewDataSource
 extension FavoritesListVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favorites.count
@@ -89,10 +96,10 @@ extension FavoritesListVC: UITableViewDataSource{
         cell.set(favorite: favorites[indexPath.row])
         return cell
     }
-    
-    
 }
 
+
+// MARK: - UITableViewDelegate
 extension FavoritesListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favorites[indexPath.row]
@@ -134,6 +141,9 @@ extension FavoritesListVC: UITableViewDelegate {
         print("4")
     }
 }
+
+
+// MARK: - UserInfoVCDelegate
 extension FavoritesListVC: UserInfoVCDelegate {
     func didRequestFollowers(for username: String, whatToLoad: WhatToLoad) {
         self.delegate?.requestFollowerOrFollowingList(for: username, whatToLoad: whatToLoad)
@@ -142,6 +152,4 @@ extension FavoritesListVC: UserInfoVCDelegate {
         }
         
     }
-    
-    
 }

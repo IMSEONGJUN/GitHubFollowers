@@ -8,12 +8,11 @@
 
 import UIKit
 
-
-
 class FollowerListVC: UIViewController {
 
     enum Section: CaseIterable { case main }
     
+    // MARK: - Properties
     var username = ""
     var followers = [Follower]()
     var filteredFollowers = [Follower]()
@@ -26,6 +25,7 @@ class FollowerListVC: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
+    // MARK: - Initializer & Life Cycle
     init(username: String) {
         self.username = username
         super.init(nibName: nil, bundle: nil)
@@ -38,7 +38,7 @@ class FollowerListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewController()
+        configureNaviBar()
         configureSearchController()
         configureCollectionView()
         configureDataSource()
@@ -51,7 +51,13 @@ class FollowerListVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    func configureViewController() {
+    deinit {
+        print("FollowerListVC deinit!")
+    }
+    
+    
+    // MARK: - Initial SetUp
+    func configureNaviBar() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -85,6 +91,8 @@ class FollowerListVC: UIViewController {
         })
     }
     
+    
+    // MARK: - Action Handler
     func getFollowers(username: String, page: Int) {
         showLoadingView()
         isLoadingMoreFollowers = true
@@ -110,10 +118,6 @@ class FollowerListVC: UIViewController {
         }
     }
         
-    deinit {
-        print("FollowerListVC deinit!")
-    }
-    
     func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
@@ -122,18 +126,15 @@ class FollowerListVC: UIViewController {
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }
-        
     }
     
     @objc func addButtonTapped() {
-        
         NetworkManager.shared.getUserInfo(for: username) {[weak self] result in
             guard let self = self else {return}
             
             switch result {
             case .success(let user):
                 let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                
                 PersistenceManager.updateWith(favorite: favorite, actionType: .add) {[weak self] error in
                     guard let self = self else {return}
                     guard let error = error else {
@@ -142,15 +143,13 @@ class FollowerListVC: UIViewController {
                     }
                     self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
                 }
-                
-                
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
             }
         }
     }
 }
-
+// MARK: - UICollectionViewDelegateFlowLayout
 extension FollowerListVC: UICollectionViewDelegateFlowLayout {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -177,6 +176,8 @@ extension FollowerListVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
+
+// MARK: - UISearchResultsUpdating
 extension FollowerListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let filterKey = searchController.searchBar.text, !filterKey.isEmpty else {
@@ -192,6 +193,8 @@ extension FollowerListVC: UISearchResultsUpdating {
     }
 }
 
+
+// MARK: - Custom Delegates
 extension FollowerListVC: UserInfoVCDelegate {
     func didRequestFollowers(for username: String, whatToLoad: WhatToLoad) {
         self.username = username

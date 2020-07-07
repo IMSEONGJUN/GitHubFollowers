@@ -21,9 +21,8 @@ class GFItemInfoVC: UIViewController {
     let actionButton = GFButton()
     var mySwitch = UISwitch()
     
-    
-    weak var delegate: GFItemInfoVCDelegate?
     var user: User
+    weak var delegate: GFItemInfoVCDelegate?
     
     init(user: User) {
         self.user = user
@@ -61,8 +60,6 @@ class GFItemInfoVC: UIViewController {
         self.actionButton.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
     }
     
-    @objc func didTapActionButton() {}
-    
     private func layoutUI() {
         view.addSubview(stackView)
         view.addSubview(actionButton)
@@ -85,6 +82,6 @@ class GFItemInfoVC: UIViewController {
         ])
     }
 
-    @objc func switchButtonHandle(_ sender: UISwitch) {
-    }
+    @objc func didTapActionButton() {}
+    @objc func switchButtonHandle(_ sender: UISwitch) {}
 }

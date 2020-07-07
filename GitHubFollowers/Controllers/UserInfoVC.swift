@@ -13,9 +13,9 @@ protocol UserInfoVCDelegate: class {
     func didRequestFollowers(for username: String, whatToLoad: WhatToLoad)
 }
 
-
 class UserInfoVC: UIViewController {
 
+    // MARK: - Properties
     let scrollView = UIScrollView()
     let overallContainerView = UIView()
     
@@ -30,6 +30,8 @@ class UserInfoVC: UIViewController {
     
     weak var delegate: UserInfoVCDelegate?
     
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -44,6 +46,8 @@ class UserInfoVC: UIViewController {
         getUserInfo()
     }
     
+    
+    // MARK: - Initial SetUp
     func configureNavigationBarButton() {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         doneButton.tintColor = .systemGreen
@@ -52,20 +56,7 @@ class UserInfoVC: UIViewController {
         addButton.tintColor = .systemGreen
         navigationItem.rightBarButtonItem = addButton
     }
-    
-    @objc func addFavoritesButtonTapped() {
-        NetworkManager.shared.getUserInfo(for: username) {[weak self] result in
-            guard let self = self else {return}
-            
-            switch result {
-            case .success(let user):
-                self.addUserToFavoriteVC(user: user)
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
-            }
-        }
-    }
-    
+
     func addUserToFavoriteVC(user: User) {
         let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
         
@@ -76,37 +67,6 @@ class UserInfoVC: UIViewController {
                 return
             }
             self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
-        }
-    }
-    
-    func getUserInfo() {
-        print("1")
-//        let semaphore = DispatchSemaphore(value: 0)
-        let group = DispatchGroup()
-        group.enter()
-        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
-            guard let self = self else {return}
-            print("9")
-            switch result {
-            case .success(let user):
-                DispatchQueue.main.async {
-                    print("11.5")
-                    self.configureUIElements(with: user)
-                }
-                print("10")
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
-                break
-            }
-            print("11")
-//            semaphore.signal()
-            group.leave()
-        }
-//        semaphore.wait()
-        group.wait()
-        print("after Async task end")
-        group.notify(queue: .main) {
-            print("6")
         }
     }
     
@@ -169,20 +129,66 @@ class UserInfoVC: UIViewController {
         ])
     }
     
+    
+    // MARK: - Action Handler
+    func getUserInfo() {
+            print("1")
+    //        let semaphore = DispatchSemaphore(value: 0)
+            let group = DispatchGroup()
+            group.enter()
+            NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
+                guard let self = self else {return}
+                print("9")
+                switch result {
+                case .success(let user):
+                    DispatchQueue.main.async {
+                        print("11.5")
+                        self.configureUIElements(with: user)
+                    }
+                    print("10")
+                case .failure(let error):
+                    self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
+                    break
+                }
+                print("11")
+    //            semaphore.signal()
+                group.leave()
+            }
+    //        semaphore.wait()
+            group.wait()
+            print("after Async task end")
+            group.notify(queue: .main) {
+                print("6")
+            }
+        }
+    
+    @objc func addFavoritesButtonTapped() {
+        NetworkManager.shared.getUserInfo(for: username) {[weak self] result in
+            guard let self = self else {return}
+            
+            switch result {
+            case .success(let user):
+                self.addUserToFavoriteVC(user: user)
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Error Message", message: error.rawValue, buttonTitle: "OK")
+            }
+        }
+    }
+    
     func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
         childVC.didMove(toParent: self)
-        
     }
     
     @objc func dismissVC() {
         dismiss(animated: true)
     }
-
-
 }
+
+
+// MARK: - Custom Delegates
 extension UserInfoVC: GFItemInfoVCDelegate {
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {

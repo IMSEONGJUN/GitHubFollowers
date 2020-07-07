@@ -16,6 +16,7 @@ protocol SearchVCDelegate: class {
 
 class SearchVC: UIViewController {
 
+    // MARK: - Properties
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get List")
@@ -31,6 +32,8 @@ class SearchVC: UIViewController {
     
     weak var delegate: SearchVCDelegate?
     
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -56,6 +59,8 @@ class SearchVC: UIViewController {
         NetworkManager.shared.whatToLoad = WhatToLoad.followers.rawValue
     }
     
+    
+    // MARK: - Initial SetUp
     func configureSelectionLabel() {
         view.addSubview(selectionLabel)
         selectionLabel.text = "Follower"
@@ -122,13 +127,15 @@ class SearchVC: UIViewController {
         ])
     }
     
-    @objc func switchValueHandle(_ sender: UISwitch) {
-        selectionLabel.text = sender.isOn ? "Follower" : "Following"
-        NetworkManager.shared.whatToLoad = sender.isOn ? "followers" : "following"
-    }
-    
     func createDismissKeyboardTapGesture() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+    }
+    
+    
+    // MARK: - Action Handler
+    @objc func switchValueHandle(_ sender: UISwitch) {
+        selectionLabel.text = sender.isOn ? WhatToLoad.followers.rawValue : WhatToLoad.following.rawValue
+        NetworkManager.shared.whatToLoad = sender.isOn ? WhatToLoad.followers.rawValue : WhatToLoad.following.rawValue
     }
     
     @objc func didTapGetListButton() {
@@ -151,6 +158,8 @@ class SearchVC: UIViewController {
     
 }
 
+
+// MARK: - UITextFieldDelegate
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         didTapGetListButton()
@@ -158,6 +167,8 @@ extension SearchVC: UITextFieldDelegate {
     }
 }
 
+
+// MARK: - Custom Delegate
 extension SearchVC: FavoritesVCDelegate {
     func requestFollowerOrFollowingList(for username: String, whatToLoad: WhatToLoad) {
             delegate?.popViewController()
