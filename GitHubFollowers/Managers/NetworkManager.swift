@@ -32,7 +32,7 @@ class NetworkManager {
                 return
             }
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
                 completed(.failure(.invalidResponse))
                 return
             }
@@ -108,13 +108,12 @@ class NetworkManager {
         guard let url = URL(string: urlString) else {
             completed(nil)
             return
-            
         }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self,
                 error == nil,
-                let response = response as? HTTPURLResponse, response.statusCode == 200,
+                let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode),
                 let data = data,
                 let image = UIImage(data: data) else {
                     completed(nil)
