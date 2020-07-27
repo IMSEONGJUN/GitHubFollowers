@@ -24,5 +24,10 @@ class GFRepoItemVC: GFItemInfoVC {
     
     override func didTapActionButton() {
         delegate?.didTapGitHubProfile(for: user)
+//        guard let url = URL(string: user.htmlUrl) else {
+//            presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid.", buttonTitle: "OK")
+//            return
+//        }
+//        presentSafariVC(with: url)
     }
 }

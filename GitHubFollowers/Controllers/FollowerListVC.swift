@@ -203,7 +203,7 @@ extension FollowerListVC: UserInfoVCDelegate {
         followers.removeAll()
         filteredFollowers.removeAll()
 //        collectionView.setContentOffset(.zero, animated: true)
-        collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         updateData(on: followers)
         NetworkManager.shared.whatToLoad = whatToLoad.rawValue
         self.getFollowers(username: username, page: page)
