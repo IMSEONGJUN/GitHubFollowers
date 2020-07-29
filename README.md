@@ -6,9 +6,9 @@
 
 ## Version
 
-- Latest Update : 2020. 06. 12
-- Latest Version : v1.0.4
-- Changes : changed UI color of the favorite tab in dark mode.
+- Latest Update : 2020. 07. 29
+- Latest Version : v1.0.5
+- Changes : Add Google Firebase Analytics
 
 ## About GitHubFollowers
 > - **User Network** for `GitHub` users
@@ -44,4 +44,4 @@ open GitHubFollowers.xcodeproj
 ```
 ## Third-party libraries
 
-- No Third-party libraries
+- Google Firebase Analytics
