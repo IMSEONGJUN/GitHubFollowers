@@ -143,6 +143,7 @@ class UserInfoVC: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async { // A)) main큐에 아래 task를 할당하고 실행 흐름 이어감
                     print("11.5")
+                    print("Thread Test: ", Thread.isMainThread)
                     self.configureUIElements(with: user)
                 }
                 print("10")
@@ -160,6 +161,7 @@ class UserInfoVC: UIViewController {
 //      <notify의 task를 main큐에 할당했을 경우, 위에 먼저 main큐에 할당된 task->self.configureUIElements(with: user) 먼저 실행하고나서 실행>
         group.notify(queue: .main) {
             print("6") // 가장 마지막에 실행
+            print("Thread Test: ", Thread.isMainThread)
         }
         
 //      <notify의 task를 main이 아닌 커스텀큐에 할당했을 경우>

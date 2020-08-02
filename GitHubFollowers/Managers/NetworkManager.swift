@@ -65,6 +65,7 @@ class NetworkManager {
         print("3")
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print("7")
+            print("\nthread Test: ", Thread.isMainThread)
             guard error == nil else {
                 completed(.failure(.unableToComplete))
                 return
