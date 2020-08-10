@@ -154,8 +154,6 @@ class SearchVC: UIViewController {
     func vibrate() {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
-    
-    
 }
 
 

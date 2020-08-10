@@ -25,6 +25,7 @@ class FollowerListVC: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
+    
     // MARK: - Initializer & Life Cycle
     init(username: String) {
         self.username = username
@@ -149,6 +150,8 @@ class FollowerListVC: UIViewController {
         }
     }
 }
+
+
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FollowerListVC: UICollectionViewDelegateFlowLayout {
     
@@ -223,6 +226,4 @@ extension FollowerListVC: SearchVCDelegate {
         print("searchvc delegate")
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
 }
