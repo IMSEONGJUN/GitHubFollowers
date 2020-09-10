@@ -155,21 +155,23 @@ class UserInfoVC: UIViewController {
             //semaphore.signal()
             group.leave() // 여기서 leave를 치고 notify를 호출하는데 notify의 큐가 main큐이다. 위에 A))에서 먼저 main큐에 작업을 할당했기 때문에 serial큐인 main큐는 먼저 할당된 task를 끝내야만 두번째로 할당된 notify의 task를 실행한다. notify의 큐를 main이 아닌 커스텀큐로 하면 main과 커스텀큐의 notify작업이 별도로 동시에 실행됨.
         }
+        print("12")
 //        semaphore.wait()
 //        group.wait()
         print("after Async task end")
-//      <notify의 task를 main큐에 할당했을 경우, 위에 먼저 main큐에 할당된 task->self.configureUIElements(with: user) 먼저 실행하고나서 실행>
+        
+// MARK: <notify의 task를 main큐에 할당했을 경우, 위에 먼저 main큐에 할당된 task->self.configureUIElements(with: user) 먼저 실행하고나서 실행>
         group.notify(queue: .main) {
             print("6") // 가장 마지막에 실행
             print("Thread Test: ", Thread.isMainThread)
         }
         
-//      <notify의 task를 main이 아닌 커스텀큐에 할당했을 경우>
+// MARK: <notify의 task를 main이 아닌 커스텀큐에 할당했을 경우>
 //      group.notify(queue: .init(label: "my")) {
-//          print("6") // group.leave() 호출 즉시 해당큐에서 앞에 먼저 할당된 task가 없는 경우 가장 먼저 실행됨
+//          print("6") // group.leave() 호출 즉시 커스텀큐 안에 앞에 먼저 할당된 task가 없는 경우 가장 먼저 실행됨
 //      }
         
-//        print("6") // for semaphore
+//       print("6") // for semaphore
     }
     
     @objc func addFavoritesButtonTapped() {

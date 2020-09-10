@@ -43,6 +43,19 @@
 		D45C727C00D9890A72A64C76 /* Pods_GitHubFollowers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB79B6A36ED3ACA28979EB7 /* Pods_GitHubFollowers.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CE38E36D24FF7CE100C0A200 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		25A3DB485001119FBC8E1398 /* Pods-GitHubFollowers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubFollowers.debug.xcconfig"; path = "Target Support Files/Pods-GitHubFollowers/Pods-GitHubFollowers.debug.xcconfig"; sourceTree = "<group>"; };
 		34E57A49D265BB5C65B69D61 /* Pods-GitHubFollowers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubFollowers.release.xcconfig"; path = "Target Support Files/Pods-GitHubFollowers/Pods-GitHubFollowers.release.xcconfig"; sourceTree = "<group>"; };
@@ -304,6 +317,7 @@
 				CE77B57323CB5567000F36FE /* Frameworks */,
 				CE77B57423CB5567000F36FE /* Resources */,
 				8FBE92EF542A8BF8433655BA /* [CP] Embed Pods Frameworks */,
+				CE38E36D24FF7CE100C0A200 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
