@@ -17,36 +17,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-        window = UIWindow(frame:UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.rootViewController = createTabBar()
-        
-        configureNavigationBar()
+//        window = UIWindow(frame:UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+//        window?.rootViewController = createTabBar()
+//
+//        configureNavigationBar()
         return true
     }
 
-    func createTabBar() -> UITabBarController {
-        let searchVC = SearchVC()
-//        searchVC.title = "Search"
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        let searchNavi = UINavigationController(rootViewController: searchVC)
-        
-        let favoritesListVC = FavoritesListVC()
-        favoritesListVC.delegate = searchVC
-//        favoritesListVC.title = "Favorites"
-        favoritesListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        let favoritesNavi = UINavigationController(rootViewController: favoritesListVC)
-        
-        let tabbar = UITabBarController()
-        UITabBar.appearance().tintColor = .systemGreen
-        tabbar.viewControllers = [searchNavi, favoritesNavi]
-
-        return tabbar
-    }
-    
-    func configureNavigationBar() {
-        UINavigationBar.appearance().tintColor = .systemGreen
-    }
+//    func createTabBar() -> UITabBarController {
+//        let searchVC = SearchVC()
+////        searchVC.title = "Search"
+//        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+//        let searchNavi = UINavigationController(rootViewController: searchVC)
+//
+//        let favoritesListVC = FavoritesListVC()
+//        favoritesListVC.delegate = searchVC
+////        favoritesListVC.title = "Favorites"
+//        favoritesListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+//        let favoritesNavi = UINavigationController(rootViewController: favoritesListVC)
+//
+//        let tabbar = UITabBarController()
+//        UITabBar.appearance().tintColor = .systemGreen
+//        tabbar.viewControllers = [searchNavi, favoritesNavi]
+//
+//        return tabbar
+//    }
+//
+//    func configureNavigationBar() {
+//        UINavigationBar.appearance().tintColor = .systemGreen
+//    }
     
     // MARK: UISceneSession Lifecycle
     @available(iOS 13.0, *)
