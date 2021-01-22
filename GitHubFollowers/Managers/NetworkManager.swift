@@ -9,13 +9,15 @@
 import UIKit
 
 class NetworkManager {
-    static let shared = NetworkManager()
-    private let baseURL = "https://api.github.com/users/"
     
-    let cache = NSCache<NSString, UIImage>()
-    var whatToLoad = WhatToLoad.followers.rawValue
-    let countPerPage = 100
+    static let shared = NetworkManager()
     private init() {}
+    
+    private let baseURL = "https://api.github.com/users/"
+    private let cache = NSCache<NSString, UIImage>()
+    private let countPerPage = 100
+    
+    var whatToLoad = WhatToLoad.followers.rawValue
     
     func getFollowers(for username: String, page: Int?, completed: @escaping (Result<[Follower], GFError>) -> Void) {
         

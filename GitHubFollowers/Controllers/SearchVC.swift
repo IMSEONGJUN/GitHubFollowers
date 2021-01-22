@@ -13,7 +13,6 @@ protocol SearchVCDelegate: class {
     func popViewController()
 }
 
-
 class SearchVC: UIViewController {
 
     // MARK: - Properties
@@ -41,6 +40,7 @@ class SearchVC: UIViewController {
     
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
+//        additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         configureLogoImageView()
         configureTextField()
         configureSelectionLabel()
@@ -169,9 +169,9 @@ extension SearchVC: UITextFieldDelegate {
 // MARK: - Custom Delegate
 extension SearchVC: FavoritesVCDelegate {
     func requestFollowerOrFollowingList(for username: String, whatToLoad: WhatToLoad) {
-            delegate?.popViewController()
-            self.usernameTextField.text = username
-            NetworkManager.shared.whatToLoad = whatToLoad.rawValue
-            didTapGetListButton()
-        }
+        delegate?.popViewController()
+        self.usernameTextField.text = username
+        NetworkManager.shared.whatToLoad = whatToLoad.rawValue
+        didTapGetListButton()
+    }
 }
