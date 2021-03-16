@@ -95,7 +95,7 @@ class UserInfoVC: UIViewController {
         
         NSLayoutConstraint.activate([
             overallContainerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            overallContainerView.heightAnchor.constraint(equalToConstant: 600)
+            overallContainerView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ])
         
     }
